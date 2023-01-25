@@ -97,14 +97,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const navTheme = createTheme({
   palette: {
-    primary: { main: "#edab8a" },
+    primary: { main: "#f50057" },
     text: { main: "#ffffff" },
   },
   typography: {
     title: {
       color: "#ffffff",
-      fontWeight: "700",
-      fontSize: "30px",
+      fontWeight: "500",
+      fontSize: "25px",
     },
   },
 });
@@ -115,7 +115,7 @@ const drawerNavigations = [
     id: 2,
     label: "Trainings",
     Icon: <FitnessCenterIcon />,
-    href: "/trainings",
+    href: "/training",
   },
 ];
 
