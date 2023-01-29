@@ -97,7 +97,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const navTheme = createTheme({
   palette: {
-    primary: { main: "#f50057" },
+    primary: { main: "#ff1744" },
     text: { main: "#ffffff" },
   },
   typography: {

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Moment from "react-moment";
-import { v4 as uuidv4 } from "uuid";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { DataGrid } from "@mui/x-data-grid";
 const Training = () => {
   const [trainings, setTrainings] = useState();
   const [isSuccess, setIsSuccess] = useState(false);
-  const getCustomerList = async () => {
+  const getTrainingrList = async () => {
     try {
       const res = await axios.get(
-        "https://customerrest.herokuapp.com/api/trainings"
+        "http://traineeapp.azurewebsites.net/api/trainings"
       );
       setIsSuccess(true);
       setTrainings(res.data.content);
@@ -18,13 +18,38 @@ const Training = () => {
       console.log(err.message);
     }
   };
-  console.log(trainings);
+  const handleDeleteTraining = async (url) => {
+    if (window.confirm("Do you want to delete this?")) {
+      try {
+        const res = await axios.delete(url);
+        console.log(res.status);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+  };
   useEffect(() => {
-    getCustomerList();
+    getTrainingrList();
   }, []);
   const [pageSize, setPageSize] = useState(5);
   const columns = [
     { field: "id", hide: true },
+    {
+      field: "delete",
+      headerName: "Delete",
+      align: "center",
+      sortable: false,
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <div>
+            <IconButton onClick={() => handleDeleteTraining(params.id)}>
+              <DeleteIcon color="error" />
+            </IconButton>
+          </div>
+        );
+      },
+    },
     {
       field: "date",
       headerName: "Date",
@@ -40,7 +65,7 @@ const Training = () => {
   const rows = trainings
     ?.filter((training) => training.activity.toLowerCase())
     .map((training) => ({
-      id: uuidv4(),
+      id: training.links[0].href,
       date: training.date,
       duration: training.duration,
       activity: training.activity,
