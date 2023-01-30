@@ -17,7 +17,7 @@ const Customer = () => {
   const getCustomerList = async () => {
     try {
       const res = await axios.get(
-        "http://traineeapp.azurewebsites.net/api/customers"
+        "https://traineeapp.azurewebsites.net/api/customers"
       );
       setIsSuccess(true);
       setCustomers(res.data.content);

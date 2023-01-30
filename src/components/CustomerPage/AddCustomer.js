@@ -14,7 +14,7 @@ const AddCustomer = () => {
   const addNewCustomer = async () => {
     try {
       const res = await axios.post(
-        "http://traineeapp.azurewebsites.net/api/customers",
+        "https://traineeapp.azurewebsites.net/api/customers",
         JSON.stringify(newCustomerInfo),
         { headers: { "Content-Type": "application/json" } }
       );

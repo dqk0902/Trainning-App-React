@@ -11,7 +11,7 @@ const Training = () => {
   const getTrainingrList = async () => {
     try {
       const res = await axios.get(
-        "http://traineeapp.azurewebsites.net/api/trainings"
+        "https://traineeapp.azurewebsites.net/api/trainings"
       );
       setIsSuccess(true);
       setTrainings(res.data.content);

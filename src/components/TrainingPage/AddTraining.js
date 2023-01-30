@@ -15,7 +15,7 @@ const AddTraining = ({ urlTraining }) => {
   const addNewTraining = async () => {
     try {
       const res = await axios.post(
-        "http://traineeapp.azurewebsites.net/api/trainings",
+        "https://traineeapp.azurewebsites.net/api/trainings",
         JSON.stringify(newTrainingInfo),
         { headers: { "Content-Type": "application/json" } }
       );
