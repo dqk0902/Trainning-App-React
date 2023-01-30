@@ -44,7 +44,11 @@ const Training = () => {
       renderCell: (params) => {
         return (
           <div>
-            <IconButton onClick={() => handleDeleteTraining(params.id)}>
+            <IconButton
+              onClick={() =>
+                handleDeleteTraining(params.id.replace("http", "https"))
+              }
+            >
               <DeleteIcon color="error" />
             </IconButton>
           </div>

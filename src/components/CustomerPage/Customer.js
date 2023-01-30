@@ -29,7 +29,7 @@ const Customer = () => {
     if (window.confirm("Do you want to delete this customer?")) {
       try {
         const res = await axios.delete(url);
-        console.log(res.status);
+        console.log(url);
       } catch (err) {
         console.log(err.message);
       }
@@ -52,7 +52,7 @@ const Customer = () => {
       renderCell: (params) => {
         return (
           <div>
-            <EditCustomer urlEdit={params.id} />
+            <EditCustomer urlEdit={params.id.replace("http", "https")} />
           </div>
         );
       },
@@ -66,7 +66,11 @@ const Customer = () => {
       renderCell: (params) => {
         return (
           <div>
-            <IconButton onClick={() => handleDeleteCustomer(params.id)}>
+            <IconButton
+              onClick={() =>
+                handleDeleteCustomer(params.id.replace("http", "https"))
+              }
+            >
               <DeleteIcon color="error" />
             </IconButton>
           </div>
@@ -82,7 +86,7 @@ const Customer = () => {
       renderCell: (params) => {
         return (
           <div>
-            <AddTraining urlTraining={params.id} />
+            <AddTraining urlTraining={params.id.replace("http", "https")} />
           </div>
         );
       },
