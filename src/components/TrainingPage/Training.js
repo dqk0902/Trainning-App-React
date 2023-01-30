@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import { CircularProgress, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DataGrid } from "@mui/x-data-grid";
+import BarChartTraining from "./BarChart";
 const Training = () => {
   const [trainings, setTrainings] = useState();
   const [isSuccess, setIsSuccess] = useState(false);
@@ -85,6 +86,7 @@ const Training = () => {
         ) : (
           <CircularProgress />
         )}
+        <BarChartTraining trainings={trainings} />
       </div>
     </div>
   );

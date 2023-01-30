@@ -9,3 +9,9 @@
   width: 85vw;
   height: 30rem;
 }
+.search {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}

@@ -1,12 +1,12 @@
 import * as React from "react";
-import { styled, useTheme, alpha, createTheme } from "@mui/material/styles";
+import { styled, useTheme, createTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { Outlet } from "react-router-dom";
+import TodayIcon from "@mui/icons-material/Today";
 import {
   AppBar as MUIAppBar,
   Toolbar,
@@ -20,7 +20,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  InputBase,
   ThemeProvider,
 } from "@mui/material";
 
@@ -52,49 +51,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: "15px",
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  color: "white",
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  fontWeight: "bold",
-  color: "white",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "20ch",
-      "&:focus": {
-        width: "30ch",
-      },
-    },
-  },
-}));
-
 const navTheme = createTheme({
   palette: {
     primary: { main: "#ff1744" },
@@ -117,6 +73,7 @@ const drawerNavigations = [
     Icon: <FitnessCenterIcon />,
     href: "/training",
   },
+  { id: 3, label: "Calendar", Icon: <TodayIcon />, href: "/calendar" },
 ];
 
 export default function Root() {
@@ -161,16 +118,6 @@ export default function Root() {
                   Personal Trainner
                 </Link>
               </Typography>
-
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
             </Toolbar>
           </AppBar>
         </ThemeProvider>
